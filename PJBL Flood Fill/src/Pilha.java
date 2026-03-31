@@ -7,7 +7,10 @@ public class Pilha {
 
     public void empilhar(Pixel p) {
         No novoNo = new No(p);
-        novoNo.setProximo(topo);
+        if (!estaVazia()) {
+            novoNo.setProximo(topo);
+            topo.setAnterior(novoNo);
+        }
         topo = novoNo;
     }
 
@@ -17,6 +20,11 @@ public class Pilha {
         }
         Pixel p = topo.getPixel();
         topo = topo.getProximo();
+
+        if (topo != null) {
+            topo.setAnterior(null);
+        }
+
         return p;
     }
 

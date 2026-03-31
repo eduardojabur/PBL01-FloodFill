@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 public class Main {
     public static void main(String[] args) {
 
-        // Try-with-resources: Garante que o BufferedReader será fechado no final, afim de evitar o vazamento de memória
+
         try (BufferedReader leitor = new BufferedReader(new InputStreamReader(System.in))) {
 
             File entrada = new File("entrada.png");
@@ -36,7 +36,7 @@ public class Main {
             System.out.print("Azul (B): ");
             int b = Integer.parseInt(leitor.readLine());
 
-            // Converte o RGB fornecido para ARGB
+
             int corNova = (255 << 24) | (r << 16) | (g << 8) | b;
 
             System.out.println("\n-- Escolha a Estrutura --");
@@ -45,7 +45,7 @@ public class Main {
             System.out.print("Opção: ");
             int escolha = Integer.parseInt(leitor.readLine());
 
-            // Criação das pastas para armazenar a animação
+
             new File("frames_pilha").mkdirs();
             new File("frames_fila").mkdirs();
 

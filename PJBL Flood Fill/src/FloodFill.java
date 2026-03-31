@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 
 public class FloodFill {
 
-    // Lógica de tolerância para imagens reais (evita travamentos com ruídos)
+
     private boolean coresParecidas(int cor1, int cor2, int tolerancia) {
         int r1 = (cor1 >> 16) & 0xFF;
         int g1 = (cor1 >> 8) & 0xFF;
@@ -32,7 +32,7 @@ public class FloodFill {
         }
     }
 
-    // Salva a animação frame a frame
+
     private void salvarFrame(BufferedImage imagem, String pasta, int frameIndex) {
         try {
             File outputfile = new File(pasta + "/frame_" + frameIndex + ".png");
@@ -81,7 +81,7 @@ public class FloodFill {
                         imagem.setRGB(x, y, corNova);
                         modificacoes++;
 
-                        // Salva o frame a cada 500 pixels processados
+
                         if (modificacoes % 500 == 0) {
                             salvarFrame(imagem, pastaFrames, ++frameCount);
                         }
@@ -94,14 +94,14 @@ public class FloodFill {
                         rotuloImagem.repaint();
 
                         try {
-                            Thread.sleep(2); // Velocidade da animação visual
+                            Thread.sleep(2);
                         } catch (InterruptedException e) {
-                            Thread.currentThread().interrupt(); // Boa prática de exceção
+                            Thread.currentThread().interrupt();
                         }
                     }
                 }
             }
-            salvarFrame(imagem, pastaFrames, ++frameCount); // Salva o último frame
+            salvarFrame(imagem, pastaFrames, ++frameCount);
             salvarImagemFinal(imagem, arquivoSaida);
         }).start();
     }

@@ -13,6 +13,7 @@ public class Fila {
             inicio = novoNo;
         } else {
             fim.setProximo(novoNo);
+            novoNo.setAnterior(fim);
         }
         fim = novoNo;
     }
@@ -23,9 +24,13 @@ public class Fila {
         }
         Pixel p = inicio.getPixel();
         inicio = inicio.getProximo();
+
         if (inicio == null) {
             fim = null;
+        } else {
+            inicio.setAnterior(null);
         }
+
         return p;
     }
 
